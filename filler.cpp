@@ -131,6 +131,7 @@ template <template <class T> class OrderingStructure> animation filler::fill(Fil
 
      int fram = 0;
      anim.addFrame(config.img);
+    
      // for each center given in the centers vector array
      for(int counterCenter = 0; counterCenter < (int)config.centers.size(); counterCenter++){
        // pick the corresponding picker.
@@ -140,7 +141,8 @@ template <template <class T> class OrderingStructure> animation filler::fill(Fil
        center c = config.centers[counterCenter];
        ord.add(point(c));
        fram++;
-       if(fram % config.frameFreq == 0) {
+         
+       if (fram % config.frameFreq == 0) {
          anim.addFrame(config.img);
        }
        // loop while ordering structure stack/queue is not empty
@@ -153,10 +155,10 @@ template <template <class T> class OrderingStructure> animation filler::fill(Fil
          // for(int i = 0; i < 4; i++) {
          //}
 
-         int left = p.x - 1;
-         int down = p.y +1;
-         int right = p.x + 1;
-         int up = p.y -1;
+         int left = (int)p.x - 1;
+         int down = (int)p.y + 1;
+         int right = (int)p.x + 1;
+         int up = (int)p.y - 1;
 
          // LEFT
          // if((int)(p.x + xdir[i]) < (int)imw && (int)(p.x + xdir[i]) >= 0 && (int)(p.y + ydir[i]) < imh && p.y + ydir[i] >= 0) {
@@ -172,7 +174,8 @@ template <template <class T> class OrderingStructure> animation filler::fill(Fil
              // send pixel to colorPicker
              *impix = cpick->operator()(newp);
              fram++;
-             if(fram % config.frameFreq == 0) {
+               
+             if (fram % config.frameFreq == 0) {
                anim.addFrame(config.img);
              }
            }

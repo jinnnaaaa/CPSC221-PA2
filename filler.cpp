@@ -139,6 +139,9 @@ template <template <class T> class OrderingStructure> animation filler::fill(Fil
        center c = config.centers[counterCenter];
        ord.add(point(c));
        fram++;
+         
+       *im.getPixel(point(c).x, point(c).y) = cpick->operator()(point(c));
+        
        if(fram % config.frameFreq == 0) {
          anim.addFrame(im);
        }
